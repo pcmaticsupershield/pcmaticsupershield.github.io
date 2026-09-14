@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Matic Help Centre - Download, Login, Install & Account Guides</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #183153;
+            --secondary: #2563eb;
+            --accent: #38bdf8;
+            --light: #f4f8fc;
+            --text: #243247;
+            --muted: #667085;
+            --white: #ffffff;
+            --border: #e3eaf2;
+            --shadow: 0 15px 40px rgba(24, 49, 83, 0.08);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7faff;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            max-width: 1180px;
+            margin: auto;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #46566b;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .hero {
+            background:
+                radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.20), transparent 28%),
+                radial-gradient(circle at 15% 80%, rgba(37, 99, 235, 0.15), transparent 30%),
+                linear-gradient(135deg, #102847, #1d4775);
+            color: white;
+            padding: 85px 22px 90px;
+        }
+
+        .hero-inner {
+            max-width: 1050px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.20);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            margin-bottom: 22px;
+            letter-spacing: -1.2px;
+        }
+
+        .hero p {
+            max-width: 780px;
+            margin: auto;
+            font-size: 18px;
+            color: #dcecff;
+        }
+
+        .search-box {
+            max-width: 650px;
+            margin: 34px auto 0;
+            background: white;
+            padding: 7px;
+            border-radius: 14px;
+            display: flex;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.16);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 15px;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .search-box button {
+            border: none;
+            background: var(--secondary);
+            color: white;
+            padding: 0 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .section {
+            max-width: 1180px;
+            margin: auto;
+            padding: 70px 22px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .article-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(24,49,83,0.13);
+            border-color: #c9dcf5;
+        }
+
+        .article-number {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf3ff;
+            color: var(--secondary);
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .article-card h3 {
+            color: var(--primary);
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .article-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .read-more {
+            color: var(--secondary);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .intro {
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: auto;
+            padding: 70px 22px;
+        }
+
+        .intro-content h2 {
+            color: var(--primary);
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .intro-content p {
+            margin-bottom: 18px;
+            color: #536276;
+        }
+
+        .help-box {
+            margin-top: 35px;
+            padding: 28px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #edf6ff, #f8fbff);
+            border: 1px solid #d9e9fa;
+        }
+
+        .help-box h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background: #10233d;
+            color: #b9c9dc;
+            padding: 42px 22px;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            max-width: 500px;
+        }
+
+        .footer-brand strong {
+            color: white;
+            font-size: 21px;
+        }
+
+        .footer-brand p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1180px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.10);
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .search-box {
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 65px 18px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 55px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Help<span>Centre</span></a>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#guides">Guides</a>
+            <a href="#about">About</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-label">DOWNLOAD • LOGIN • INSTALL • ACTIVATE</div>
+
+            <h1>PC Matic Help Centre</h1>
+
+            <p>
+                Find easy-to-follow guides for downloading, installing, signing in,
+                reinstalling and activating your software on Windows computers.
+            </p>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search installation and account guides..." aria-label="Search">
+                <button type="button">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="guides">
+
+        <div class="section-heading">
+            <h2>Popular Help Guides</h2>
+            <p>
+                Browse our step-by-step articles covering existing accounts,
+                Windows installation, downloads, login and software activation.
+            </p>
+        </div>
+
+        <div class="article-grid">
+
+            <article class="article-card">
+                <div class="article-number">01</div>
+                <h3>
+                    PC Matic Download Already Purchased: Sign In, Install & Activate Your Account
+                </h3>
+                <p>
+                    Learn how customers with an existing purchase can sign in,
+                    download the software, install it and activate their account.
+                </p>
+                <a class="read-more" href="pc-matic-download-already-purchased.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">02</div>
+                <h3>
+                    PC Matic Download for Windows 10: Install Software With an Existing Account
+                </h3>
+                <p>
+                    A practical Windows 10 guide explaining how to download and
+                    install software when you already have an account.
+                </p>
+                <a class="read-more" href="pc-matic-download-windows-10.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">03</div>
+                <h3>
+                    How to Reinstall PC Matic Already Purchased on Windows 10
+                </h3>
+                <p>
+                    Follow a simple process for reinstalling previously purchased
+                    software after replacing, resetting or troubleshooting a computer.
+                </p>
+                <a class="read-more" href="reinstall-pc-matic-already-purchased.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">04</div>
+                <h3>
+                    PC Matic Login Account: Sign In, Download & Install PC Matic
+                </h3>
+                <p>
+                    Understand the basic account login process and how signing in
+                    can help you access available download and installation options.
+                </p>
+                <a class="read-more" href="pc-matic-login-account.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">05</div>
+                <h3>
+                    PC Matic Download Existing Account: Complete Installation Guide
+                </h3>
+                <p>
+                    Learn how an existing customer can locate the download,
+                    complete installation and continue using an established account.
+                </p>
+                <a class="read-more" href="pc-matic-download-existing-account.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">06</div>
+                <h3>
+                    PC Matic Install Already Purchased: Download, Activate & Add to Your Computer
+                </h3>
+                <p>
+                    A step-by-step overview for customers who want to install
+                    already purchased software and add another computer.
+                </p>
+                <a class="read-more" href="pc-matic-install-already-purchased.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">07</div>
+                <h3>
+                    PC Matic Account Login: How to Access, Download & Reinstall PC Matic
+                </h3>
+                <p>
+                    Learn how to access your account and find the right options
+                    when you need to download or reinstall your software.
+                </p>
+                <a class="read-more" href="pc-matic-account-login.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">08</div>
+                <h3>
+                    Download PC Matic and Install: Guide for Existing Customers
+                </h3>
+                <p>
+                    An easy installation guide designed for existing customers
+                    who need to download and install the software again.
+                </p>
+                <a class="read-more" href="download-pc-matic-and-install.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">09</div>
+                <h3>
+                    PC Matic Sign In & My Account: Download and Install on Windows 10
+                </h3>
+                <p>
+                    Find out how account access, downloads and Windows 10
+                    installation fit together in one straightforward guide.
+                </p>
+                <a class="read-more" href="pc-matic-sign-in-my-account.html">
+                    Read Guide →
+                </a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-number">10</div>
+                <h3>
+                    PC Matic Already Purchased Download: Login, Reinstall & Activate Your Software
+                </h3>
+                <p>
+                    Learn what to do when you have already purchased the software
+                    and need to log in, reinstall or activate it again.
+                </p>
+                <a class="read-more" href="pc-matic-already-purchased-download.html">
+                    Read Guide →
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="intro" id="about">
+        <div class="intro-content">
+
+            <h2>Your Guide to Downloads, Accounts and Installation</h2>
+
+            <p>
+                Welcome to our PC Matic Help Centre, a resource created to make
+                common software installation and account-related tasks easier to
+                understand. If you have already purchased the software and need
+                help finding the download, signing into your account, reinstalling
+                the program or adding it to another computer, the guides on this
+                website are designed to walk you through the process.
+            </p>
+
+            <p>
+                Many users search for phrases such as <strong>pc matic download
+                already purchased</strong>, <strong>PC Matic download existing
+                account</strong>, <strong>reinstall PC Matic already purchased</strong>,
+                or <strong>download PC Matic and install</strong> when they are
+                setting up software on a new or existing Windows computer.
+                These guides organize those topics into simple steps.
+            </p>
+
+            <p>
+                If you are using Windows 10, you can also find information about
+                <strong>PC Matic download for Windows 10</strong>, installation
+                requirements and account access. Customers who have previously
+                installed the software may also need to <strong>reinstall my PC
+                Matic</strong> after changing computers, resetting Windows or
+                troubleshooting an earlier installation.
+            </p>
+
+            <p>
+                Account access is another common part of the process. Searches
+                such as <strong>PC Matic sign in account</strong>, <strong>PC Matic
+                login</strong>, <strong>PC Matic my account</strong>, and
+                <strong>log into my PC Matic account</strong> generally relate to
+                reaching an existing account before downloading or managing a
+                subscription.
+            </p>
+
+            <div class="help-box">
+                <h3>Looking for a specific installation guide?</h3>
+                <p>
+                    Start with the guide that best matches your situation. You can
+                    use the navigation above or browse all ten guides on this page.
+                    Each article also contains links to related guides so you can
+                    move between download, login, installation, reinstallation and
+                    activation topics without starting your search again.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <strong>HelpCentre</strong>
+            <p>
+                Simple guides for account access, software downloads,
+                installation, reinstallation and activation.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pc-matic-download-already-purchased.html">Download Guide</a>
+            <a href="pc-matic-login-account.html">Login Guide</a>
+            <a href="reinstall-pc-matic-already-purchased.html">Reinstall Guide</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 HelpCentre. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
